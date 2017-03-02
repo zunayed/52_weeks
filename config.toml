@@ -1,0 +1,4 @@
+languageCode = "en-us"
+title = "dtostillwell"
+baseURL = "http://example.org/"
+theme = "test"
