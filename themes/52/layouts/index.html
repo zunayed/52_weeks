@@ -1,0 +1,25 @@
+{{ partial "header.html" . }}
+
+<main role="main">
+<div id="home">
+<h1>Posts</h1>
+
+<ul class="posts">
+{{ range (where .Data.Pages ".Params.hidefromhome" "!=" "true") }}
+    <li>
+        <span>{{ .Date.Format "Jan 02, 2006" }}</span> &raquo;
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </li>
+{{ end }}
+</ul>
+
+<h1>Projects</h1>
+<ul class="posts">
+    <li><a href="http://github.com/jekyll/jekyll/">NoisyNyc:</a> Generated a heatmap of the last 3 years of complaint data.</li>
+    <li><a href="http://github.com/jekyll/jekyll/">NoisyNyc:</a> Visualization of 2013 NBA Season</li>
+  </ul>
+</div>
+
+</main>
+
+{{ partial "footer.html" . }}
