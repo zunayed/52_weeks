@@ -44,7 +44,7 @@ cal.init({
 
 <div class="flex-container">
 <div class="flex-item">
-<p>Cal-heatmap is a wrapper around the d3.js. BACK IN MY DAY I had to handroll d3.js code with it's complicated data binding mechanisms to get something half as functional as what I have here on the right</p>
+<p>Cal-heatmap is a wrapper around the d3.js. <b>BACK IN MY DAY</b> I had to handroll d3.js code with it's complicated data binding mechanisms to get something half as functional as what I have here on the right</p>
 </div>
 <div class="flex-item">
 <div id="cal-heatmap"></div>
