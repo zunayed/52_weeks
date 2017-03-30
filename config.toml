@@ -1,6 +1,6 @@
 languageCode = "en-us"
 title = "dtostillwell"
-baseURL = "http://example.org/"
+baseURL = "https://blog-741dd.firebaseapp.com"
 theme = "52"
 pygmentsuseclasses = "true"
 # pygmentsCodeFences = "true"
