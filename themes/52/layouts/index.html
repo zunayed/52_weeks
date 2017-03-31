@@ -1,7 +1,5 @@
 {{ partial "header.html" . }}
 
-<script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
 
 <style>
@@ -14,12 +12,43 @@
 .flex-item {
     margin: 10px;
 }
+
+.alert {
+	padding: 8px 35px 8px 14px;
+	margin-bottom: 18px;
+	color: #c09853;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	background-color: #fcf8e3;
+	border: 1px solid #fbeed5;
+	border-radius: 4px;
+}
+
+.alert-heading {
+	color: inherit;
+}
+
+.alert .close {
+	position: relative;
+	top: -2px;
+	right: -21px;
+	line-height: 18px;
+}
+
+.alert-success {
+	color: #468847;
+	background-color: #dff0d8;
+	border-color: #d6e9c6;
+}
 </style>
 
 <div id="home">
 
 <body>
+	<div class="alert alert-success">
+			Hi, I'm Zunayed and I'm an Electrical & Software Engineer and currently working at <a href="http://www.tower-research.com/">Tower Research</a><br>
+    </div>
 <div class="flex-container">
+
 	<div class="flex-item">
 		<h2>Commit activity</h2>
 		<div id="cal-heatmap"></div>
@@ -54,6 +83,8 @@
 </body>
 </div>
 
+<script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
 <script type="text/javascript">
 var cal = new CalHeatMap();
 cal.init({
