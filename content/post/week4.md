@@ -1,6 +1,6 @@
 +++
 date = "2017-03-29T17:12:16-05:00"
-title = "week4 - Learning a little bit of Vue.js"
+title = "week 4 - Learning a little bit of Vue.js"
 draft = false
 
 +++
