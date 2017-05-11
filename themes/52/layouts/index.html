@@ -57,7 +57,7 @@
         <h1>52 weeks of projects</h1>
 
 		<ul class="posts">
-		{{ range (where .Data.Pages ".Params.hidefromhome" "!=" "true") }}
+		{{ range (where .Data.Pages.Reverse ".Params.hidefromhome" "!=" "true") }}
 			<li>
 				<span>{{ .Date.Format "Jan 02, 2006" }}</span> &raquo;
 				<a href="{{ .Permalink }}">{{ .Title }}</a>
@@ -98,6 +98,7 @@ cal.init({
     legend: [2, 4, 6, 8],
     verticalOrientation: true,
     domainLabelFormat: "%b - %d",
+    cellRadius: 5,
     label: {
         align: "left",
         position: "left",
