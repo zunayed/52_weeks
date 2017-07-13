@@ -85,14 +85,31 @@
 
 <script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
+<script type="text/javascript" src="https://momentjs.com/downloads/moment.js"></script>
 <script type="text/javascript">
+
+var parser = function(data) {
+  var newData = {};
+  var times = data["times"];
+
+  for (var d in times) {
+		var time = moment(times[d].date)
+    var epochTime = time.unix()
+    newData[epochTime] = times[d].val;
+  }
+
+  console.log(newData)
+  return newData;
+};
+
 var cal = new CalHeatMap();
 cal.init({
     itemSelector: "#cal-heatmap",
     data: "/tracker_data/2017_cal_data.json",
+    afterLoadData: parser,
     domain: "week",
     subDomain: "x_day",
-    start: new Date(2017, 2),
+    start: new Date(2017, 6),
     cellSize: 17,
     range: 52,
     legend: [2, 4, 6, 8],

@@ -1,0 +1,169 @@
+<script src="https://unpkg.com/vue"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
+<link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+
+<style>
+body {
+	font: 16px Helvetica;
+}
+
+#main {
+	min-height: 800px;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-flow: row;
+}
+
+#main > article {
+	margin: 4px;
+	padding: 5px;
+	border: 1px solid #cccc33;
+	flex: 3 1 60%;
+	order: 2;
+}
+
+#main > nav {
+	margin: 4px;
+	padding: 5px;
+	border: 1px solid #8888bb;
+	background: #D9DBF1;
+	flex: 1 6 20%;
+	order: 1;
+}
+
+header, footer {
+	margin: 4px;
+	padding: 5px;
+	min-height: 100px;
+}
+
+/* Too narrow to support three columns */
+@media all and (max-width: 640px) {
+	#main, #page {
+		flex-direction: column;
+	}
+
+	#main > nav, #main > article, #main {
+	/* Return them to document order */
+		order: 0;
+	}
+
+	#main > nav, #main > header, footer {
+		min-height: 50px;
+		max-height: 50px;
+	}
+}
+
+#main-viz {
+	align-items: center;
+	text-align: center;
+}
+</style>
+<html lang="en">
+<head>
+</head>
+<body>
+	<div id="app">
+	<header>
+		<h3>Year view</h3>
+    <div id="cal-heatmap"></div>
+	</header>
+
+	<div id='main'>
+		<nav>
+		</nav>
+		<article>
+			<button v-on:click="add_to_cal" type="button">Add view</button>
+			<button v-if="!active_timer" v-on:click="new_timer" type="button">New timer</button>
+			<button v-else="active_timer" v-on:click="stop_timer" type="button">Stop timer</button>
+
+            <p v-if="active_timer">
+              {{ time_left }}
+            </p>
+
+            <p>
+            # Todo
+            - timer
+                - countdown start
+                - countdown cancel/reset
+                - countdown persistence
+                - countdown api for saves
+            </p>
+		</article>
+	</div>
+	</div>
+</body>
+</html>
+
+<script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
+<script type="text/javascript" src="//momentjs.com/downloads/moment.js"></script>
+<script type="text/javascript">
+
+var data = {
+    "1483551151":4,
+    "1489021938":2,
+    "1488762738":5,
+}
+
+var cal = new CalHeatMap();
+
+// given a end time return how much time is left currently in seconds
+function calc_time_left(end_time) {
+    return moment().diff(end_time) / (1000)
+}
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    active_timer: false,
+    timer_start: undefined,
+    timer_end: undefined
+  },
+  mounted() {
+    cal.init({
+        itemSelector: "#cal-heatmap",
+        data: data,
+        domain: "year",
+        subDomain: "day",
+        displayLegend: false,
+        start: new Date(2017, 0),
+        cellSize: 16,
+        range: 1,
+    });
+  },
+  computed: {
+      time_left: function() {
+        return "hello"
+        return calc_time_left(this["time_left"])
+      }
+  },
+  methods: {
+    add_to_cal: function () {
+      console.log(data)
+      data[1489021938] = data[1489021938] + 1;
+      cal.update(data)
+    },
+    new_timer: function () {
+      now = moment();
+      this['active_timer'] = true
+      this['timer_start'] = moment()
+      this['timer_end'] = moment().add(25, "minutes")
+      console.log("Creating new timer")
+      console.log(this['timer_start'])
+      console.log(this['timer_end'])
+    },
+    stop_timer: function() {
+      console.log("Stopping new timer")
+      now = moment();
+      this['active_timer'] = false
+
+    }
+  },
+})
+
+</script>
+
+<style>
+

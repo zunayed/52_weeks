@@ -1,5 +1,5 @@
 +++
-date = "2017-03-05"
+date = "2017-07-02"
 draft = false
 title = "week 1 - What is this?"
 +++

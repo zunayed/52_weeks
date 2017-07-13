@@ -1,5 +1,5 @@
 +++
-date = "2017-04-04T17:12:16-05:00"
+date = "2017-07-19"
 title = "week 5 - Bloom filters and you"
 draft = false
 +++

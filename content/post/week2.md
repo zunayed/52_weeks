@@ -1,5 +1,5 @@
 +++
-date = "2017-03-09"
+date = "2017-07-07"
 title = "week 2 - Activity tracker"
 draft = false
 
