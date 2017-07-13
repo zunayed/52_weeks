@@ -203,6 +203,10 @@ ul.posts {
   margin-top: 2em;
 }
 
-  #related h2 {
-    margin-bottom: 1em;
-  }
+#related h2 {
+margin-bottom: 1em;
+}
+
+body {
+    background-image: url("/travel-minisites/static/background.png");
+}
