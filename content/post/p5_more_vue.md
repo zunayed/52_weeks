@@ -4,7 +4,6 @@ draft = false
 title = "p5 - More vue.js"
 +++
 
-
 # Vue Router
 The vue router is frontend equivalent to the django url conf. You'll need this if you want to make multiple route and have persistent links to your single page app. It doesn't make sense to  have to modify the window url when this library does it for you. You can also call upon it for links along with active page matching.
 
@@ -52,9 +51,9 @@ Few things to digest here
 
 <img style="max-width: 200px; margin-left: 10px;" align="right" src="http://i61.tinypic.com/vip5dl.jpg">
 
-Frontend tooling seems like the wild west to me. The tooling around Python and Go have been largely static for the last few years but JS tooling is unbearbly complicated. Just take a look at the template for a standard [webpack + vuejs project](https://github.com/vuejs-templates/webpack/tree/master/template/build). Sure this will get you started writing Vue.js code but to add this much code into your project without actually understanding any of it seems like the wrong approach. Browsers are very complicated enviroments and I'm sure the community has done it's best with what they have but I can't help but think node should just incorporate some of the tooling and standardize compiles and outputs. 
+Frontend tooling seems like the wild west to me. The tooling around Python and Go have been largely static for the last few years but JS tooling is unbearbly complicated. Just take a look at the template for a standard [webpack + vuejs project](https://github.com/vuejs-templates/webpack/tree/master/template/build). Sure this will get you started writing Vue.js code but to add this much code into your project without actually understanding any of it seems like the wrong approach. Browsers are very complicated enviroments and I'm sure the community has done it's best with what they have but I can't help but think node should just incorporate some of the tooling and standardize compiles and outputs.
 
-## Frontend dev notes for getting all this working in a django enviroment  
+## Frontend dev notes for getting all this working in a django enviroment
 
 - Use nvm (Node version manager) to install Node version 6
 - Add webpack
@@ -62,10 +61,10 @@ Frontend tooling seems like the wild west to me. The tooling around Python and G
     - sourcemaps for debugging and breakpoints
     - autoreload -> make sure you set the same port in your template as autoreload config
 		- I used the livereload plugin
-		- If you're developing inside a container don't forget to assign static ports unless you want to do mental gymnastics 
+		- If you're developing inside a container don't forget to assign static ports unless you want to do mental gymnastics
 - figure out your project structure
     - I want each vue app to live in `{{ name of app }}/static/vue/`
     - vue files > which can have css + js + html
 		- Currently imports require the *.vue extension. There is a way to avoid this but I haven't figured it out yet
-    - imports of libraries and files  
+    - imports of libraries and files
 
