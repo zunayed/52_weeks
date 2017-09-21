@@ -58,8 +58,10 @@
 
 		<ul class="posts">
 		{{ range (where .Data.Pages.Reverse ".Params.hidefromhome" "!=" "true") }}
-			<li>
-				<span>{{ .Date.Format "Jan 02, 2006" }}</span> &raquo;
+    <li>
+      <!--
+      <span>{{ .Date.Format "Jan 02, 2006" }}</span> &raquo;
+      -->
 				<a href="{{ .Permalink }}">{{ .Title }}</a>
 			</li>
 		{{ end }}

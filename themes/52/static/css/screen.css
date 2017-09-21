@@ -73,8 +73,8 @@ ul.posts {
 
   ul.posts span {
     color: #aaa;
-    font-family: Monaco, "Courier New", monospace;
-    font-size: 80%;
+    /*font-family: Monaco, "Courier New", monospace;
+     */
   }
 
 /*****************************************************************************/
@@ -208,5 +208,5 @@ margin-bottom: 1em;
 }
 
 body {
-    background-image: url("/travel-minisites/static/background.png");
+    background-color: #f5f4f0;
 }
