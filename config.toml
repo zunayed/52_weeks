@@ -4,4 +4,4 @@ baseURL = ""
 theme = "52"
 pygmentsuseclasses = "true"
 # pygmentsCodeFences = "true"
-ignoreFiles = ["\\.git/"]
+ignoreFiles = ["\\.git/", "./static/js-playground/*"]

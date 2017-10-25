@@ -1,0 +1,26 @@
+<html>
+<head>
+	 <meta charset="UTF-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	 <title>Document</title>
+</head>
+
+<body>
+	{{ partial "header" (dict "Kind" .Kind "Template" "List") }}
+	{{.Content}}
+
+		<ul class="posts">
+		{{ range .Pages }}
+    <li>
+      &raquo;
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+			</li>
+		{{ end }}
+		</ul>
+
+
+
+	{{ partial "footer" . }}
+</body>
+</html>

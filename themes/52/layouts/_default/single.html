@@ -1,19 +1,13 @@
 {{ partial "header.html" . }}
 
-
-
 <article>
-
-<div id="post">
-    <h1 id="">{{ .Title }}</h1>
-    <p class="meta"><span>{{ .Date.Format "Jan 02, 2006" }}</span></p>
-
-    {{ .Content }}
-
-</div>
+  <div id="post">
+      <h1 id="">{{ .Title }}</h1>
+      <p class="meta"><span>{{ .Date.Format "Jan 02, 2006" }}</span></p>
+      {{ .Content }}
+  </div>
 </article>
 
 <script>hljs.initHighlightingOnLoad();</script>
 
 {{ partial "footer.html" . }}
-
