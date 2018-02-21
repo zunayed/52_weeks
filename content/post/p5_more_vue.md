@@ -1,7 +1,7 @@
 +++
 date = "2017-07-17"
 draft = false
-title = "p5 - More vue.js"
+title = "More vue.js"
 +++
 
 # Vue Router

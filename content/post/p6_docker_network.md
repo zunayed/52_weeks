@@ -1,7 +1,7 @@
 +++
 date = "2017-08-15"
 draft = false
-title = "p6 - Docker networking"
+title = "Docker networking"
 +++
 
 I spent some time learning a bit more about docker networking. My current workflow for inter-container communication, such as a web server communicating with a MySQL container involves exposing the port on one container. Then in the second container, you access that port via the host machine IP/name. This works well enough but what if you don’t want to expose the port to the public? Another issue is in your configuration you could be pointed to your host machine, for example, mymachine.ny but if you ever developed on another machine you would have to switch out the names to make sure the containers all communicate within the same host There is a solution built into docker that involves creating a network bridge.
