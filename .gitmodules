@@ -1,0 +1,3 @@
+[submodule "static/js_playground/noisyNYC"]
+	path = static/js_playground/noisyNYC
+	url = git@github.com:zunayed/noisyNYC.git
