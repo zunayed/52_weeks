@@ -1,3 +1,6 @@
-[submodule "static/js_playground/noisyNYC"]
-	path = static/js_playground/noisyNYC
+[submodule "subprojects/wedding"]
+	path = subprojects/wedding
+	url = git@github.com:zunayed/wedding.git
+[submodule "subprojects/noisyNYC"]
+	path = subprojects/noisyNYC
 	url = git@github.com:zunayed/noisyNYC.git
