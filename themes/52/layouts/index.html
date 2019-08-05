@@ -1,84 +1,22 @@
 {{ partial "header.html" . }}
 
-<style>
-  .flex-container {
-    display: -webkit-flex;
-    display: flex;
-    width: 700px;
-  }
+<body id="index">
+	<div class="container">
 
-  .flex-item {
-    margin: 10px;
-  }
+	<p class="about">
+		My name is <b class="header-name">Zunayed Ali Morsalin</b> and I’m an engineer that grew up in Brooklyn. This is a place to store ideas and projects. 
+	</p>
 
-  .alert {
-    padding: 8px 35px 8px 14px;
-    margin-bottom: 18px;
-    color: #c09853;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-    background-color: #fcf8e3;
-    border: 1px solid #fbeed5;
-    border-radius: 4px;
-  }
+{{ range .Pages.GroupBy "Section" }}
+<h3>{{ .Key }}</h3>
+	<ul id="post-list">
+    {{ range .Pages }}
+    <li> &raquo; <a href="{{ .Permalink }}">{{ .Title }}</a> </li>
+    {{ end }}
+</ul>
+{{ end }}
 
-  .alert-heading {
-    color: inherit;
-  }
 
-  .alert .close {
-    position: relative;
-    top: -2px;
-    right: -21px;
-    line-height: 18px;
-  }
-
-	.alert-success {
-		color: #468847;
-		background-color: #dff0d8;
-		border-color: #d6e9c6;
-	}
-</style>
-
-<div id="home">
-	<body>
-		<div class="alert alert-success">
-			Hi, I'm Zunayed and I'm an Electrical & Software Engineer currently working at <a href="http://www.tower-research.com/">Tower Research</a><br>
-		</div>
-		<div class="flex-container">
-
-			<div class="flex-item">
-				<h1>Random ideas and notes</h1>
-
-				<ul class="posts">
-					{{ range (where .Data.Pages ".Params.hidefromhome" "!=" "true") }}
-					<li>
-						<span>{{ .Date.Format "02 Jan 2006" }}</span> &raquo;
-						<a href="{{ .Permalink }}">{{ .Title }}</a>
-					</li>
-					{{ end }}
-				</ul>
-			</div>
-		</div>
-
-		<div class="flex-container">
-			<div class="flex-item">
-				<h1>Toy projects</h1>
-				<ul class="posts">
-					<li><a href="">Fantasy football predicting</a> Tried various machine learning techniques (linear regression, random forest, knn etc) to try to win a fantasy football league</li>
-					<li><a href="">Chat sentiment analysis</a> Recorded a few months of chats between friends</li>
-					<li><a href="">Noisy Nyc:</a> Generated a heatmap of the last 3 years of complaint data.</li>
-					<li><a href="">Nba Stats:</a> Visualization of 2013 NBA Season</li>
-					<li><a href="">Nyc cloropeth:</a> Visualization of noise complaints isn nyc</li>
-					<li><a href="">311 call data analysis:</a> 311 data anyalus to look at distribution of complaints in various neighborhoods using ipython, matplotlib and pandas. </li>
-					<li><a href="">Billsplitr:</a> realtime app to learn node.js, sockets and unit testing</li>
-					<li><a href="">Gmail arduino notifier:</a> python scipt that fowards email info to a street sign</li>
-					<li><a href="">Forgetmenot:</a> ForgetMeNot - Soundcloud & Youtube Favorite managment</li>
-					<li>Webcam robot: 2 servos with a webcam attached being controlled by a joystick</li>
-				</ul>
-			</div>
-		</div>
-
-	</body>
-</div>
+</body>
 
 {{ partial "footer.html" . }}
