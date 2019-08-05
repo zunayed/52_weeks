@@ -1,5 +1,5 @@
 +++
-date = "2017-10-23"
+date = "2017-6-23"
 draft = false
 title = "Google Object Storage notes"
 hidefromhome = true

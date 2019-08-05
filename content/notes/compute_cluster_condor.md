@@ -1,8 +1,7 @@
 +++
-date = "2017-10-23"
+date = "2017-07-23"
 draft = false
-title = "25k cores compute cluster with condor and google cloud"
-hidefromhome = true
+title = "25k cores compute cluster w/Condor & Google Cloud"
 +++
 
 # condor setup
