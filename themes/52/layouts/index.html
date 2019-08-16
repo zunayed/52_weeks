@@ -11,7 +11,23 @@
 <h3>{{ .Key }}</h3>
 	<ul id="post-list">
     {{ range .Pages }}
-    <li> &raquo; <a href="{{ .Permalink }}">{{ .Title }}</a> </li>
+    <li> 
+			&raquo; <a href="{{ .Permalink }}">{{ .Title }}</a> 
+			    {{/* Display taxonomies */}}
+    {{- range $taxo, $taxonomy := .Site.Taxonomies }}
+    {{- $elems := $.Param $taxo }}
+    {{- if $elems }}
+    {{ $taxo | humanize }} &#x5b;
+    {{- range $name := $elems }}
+    {{- with $.Site.GetPage (lower (printf "/%s/%s" $taxo (urlize $name))) }}
+    <a href="{{ .Permalink }}">{{ $name }}</a>
+    {{- end }}
+    {{- end }}
+    &#x5d;
+    {{- end }}
+    {{- end }}
+
+		</li>
     {{ end }}
 </ul>
 {{ end }}

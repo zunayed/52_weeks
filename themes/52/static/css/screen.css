@@ -148,21 +148,16 @@ a, a:hover {
 #index .container {
   display: table-cell;
   padding: 1em;
-
-  -webkit-animation-fill-mode: forwards;
-  -webkit-animation-name: fadeInUp;
-  -webkit-animation-duration: 1s;
 }
 
 #index a {
   border-bottom: 2px solid #ca7271;
 }
 
-
 .post img {
   align-items: center;
-    max-width: 45vh;
     padding: 1em 0;
+    max-width: 42vh;
   }
 
 blockquote {
@@ -170,6 +165,16 @@ blockquote {
   color: #6a737d;
   padding: 0 1em;
   margin: auto;
+}
+
+.taglist {
+  color: grey;
+}
+
+@media (min-width:450px) {
+  .post img {
+    max-width: 700px;
+  }
 }
 
 .highlight .hll { background-color: #49483e }
@@ -242,5 +247,3 @@ blockquote {
 .highlight .vi { color: #f8f8f2 } /* Name.Variable.Instance */
 .highlight .vm { color: #f8f8f2 } /* Name.Variable.Magic */
 .highlight .il { color: #ae81ff } /* Literal.Number.Integer.Long */
-
-

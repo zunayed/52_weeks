@@ -3,17 +3,28 @@
 <meta name="Description" content="{{ .Title }}">
 
 <body >
-<header>
-	<a class="header-name"><b>Zunayed Ali Morsalin</b> </a>
-  <a href="/">Home</a>
-</header>
+	<header>
+		<a class="header-name"><b>Zunayed Ali Morsalin</b> </a>
+		<a href="/">Home</a>
+	</header>
 
-<div class="container post" >
-	<h1 itemprop="headline">{{ .Title }}</h1>
-	<hr/>
-	{{ .Content }}
-</div>
+	<div class="container post" >
+		<h1 itemprop="headline">{{ .Title }}</h1>
+		<span>
+
+			<div class="taglist">
+				{{ if isset .Params "tags" }} 
+					Tags: 
+				{{ end }}
+
+				{{ range .Params.tags }}
+				<a>{{ .}}</a>
+				{{ end }}
+			</div>
+
+			<hr/>
+			{{ .Content }}
+	</div>
 
 </body>
 {{ partial "footer.html" . }}
-
