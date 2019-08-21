@@ -2,6 +2,7 @@
 date = "2019-08-16"
 draft = false
 title = "Is it a BST?"
+tags = [ "trees", "recursion"]
 +++
 
 Problem statement
