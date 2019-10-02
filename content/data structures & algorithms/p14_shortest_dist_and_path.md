@@ -1,6 +1,6 @@
 +++
 date = "2019-08-20"
-draft = false 
+draft = false
 title = "Shortest path between nodes in a graph"
 tags = [ "graphs"]
 +++
@@ -11,7 +11,7 @@ Problem statement
 
 ![problem](/images/p14/problem.png)
 
-Before we start this problem let's take a quick look on how we would traverse a graph. In this case we can use a Bread first approach so we can determine the shortest distance. 
+Before we start this problem let's take a quick look on how we would traverse a graph. In this case we can use a Bread first approach so we can determine the shortest distance.
 
 ![problem](/images/p14/bfs.png)
 
@@ -41,7 +41,7 @@ Once we have a dictionary of back references we can iterate through from the `cu
 
 ![problem](/images/p14/back.png)
 
-Putting it all together - 
+Putting it all together -
 
 ```python
 from collections import deque
@@ -61,7 +61,7 @@ def shortest_path(start, target):
             if n.val not in back_ref:
                 back_ref[n.val] = cur
                 q.append(n)
-    
+
     # no target found
     if target.val not in back_ref:
         return []
@@ -70,12 +70,13 @@ def shortest_path(start, target):
     output = []
     cur = target
 
-    # Will stop at the start since the 
+    # Will stop at the start since the
     # back ref was set to None
     while cur:
         output.append(cur.val)
         cur = back_ref[cur.val]
-    
+
     # reverse order
-    return output.reverse()
+    output.reverse()
+    return output
 ```
