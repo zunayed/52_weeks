@@ -64,35 +64,38 @@ For keeping track of the number of moves we can enqueue the number of moves into
 Putting it all together  
 
 ```python
+from collections import deque
+
 DIRECTIONS = [(2, 1), (2, -1), (-2, 1), (-2, -1), (1, 2), (1, -2), (-1, 2), (-1, -2)]
 
-def knights_tour(start_r, start_c, num_row, num_col, target_r, target_c):
+def find_minimum_number_of_moves(num_row, num_col, start_r, start_c, target_r, target_c):
     def get_neighbors(r, c):
-    	neighbors = []
-    	for direction_r, direction_c in DIRECTIONS:
-    		new_r, new_c = r + direction_r, c + direction_cA
-	        if 0 <= new_r < num_row and 0 <= new_c < new_col:
-	    		neighbors.append((new_r, new_c))
+        neighbors = []
+        for direction_r, direction_c in DIRECTIONS:
+            new_r, new_c = r + direction_r, c + direction_c
+            if 0 <= new_r < num_row and 0 <= new_c < num_col:
+                neighbors.append((new_r, new_c))
 
-    return neighbors	
+        return neighbors	
 
     visited = set()
-
-    q = deque([(start_r, start_c), 0])
-    visited.append((start_r, start_c))
-
+    
+    q = deque()
+    q.append(((start_r, start_c), 0))
+    visited.add((start_r, start_c))
+    
     while q:
         cell, count = q.popleft() # fifo
-
         if (cell[0], cell[1]) == (target_r, target_c):
             return count
-
+    
         for new_r, new_c in get_neighbors(cell[0], cell[1]):
             if ((new_r, new_c) not in visited):
-                q.append((new_r, new_c), count + 1)
-                visted.append((new_r, new_c)
+                q.append(((new_r, new_c), count + 1))
+                visited.add((new_r, new_c))
 
     return -1
+
 ```
 
 Time complexity will be `O(n)` where n is number of items in the grid (r * c)
