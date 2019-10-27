@@ -31,7 +31,8 @@ def explore(node, visited):
     visited.add(node)
 
     for v in node.neighbors:
-        explore(v, visited)
+        if (n not in seen):
+            explore(v, visited)
 ```
 
 So let's example our problem again and see how we can change this standard algorithm to generate the schedule. 

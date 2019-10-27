@@ -32,7 +32,8 @@ def explore(node, visited):
     visited.add(node)
 
     for v in node.neighbors:
-        explore(v, visited)
+        if (n not in seen):
+            explore(v, visited)
 ```
 
 One special thing to note about this algorithm is the first `for` loop will account for unconnected items in the list of vertices. So if we had a graph with no nodes connected it would still explore each node. 
