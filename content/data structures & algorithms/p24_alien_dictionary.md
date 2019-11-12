@@ -1,0 +1,167 @@
++++
+date = "2019-11-09"
+draft = false
+title = "Topological sort to order character in an alien dictionary"
+tags = ["graph"]
++++
+
+Problem Statement:
+
+> Given a sorted dictionary of an alien language, you have to find the order of characters in that language.
+> Generally, dictionary does not contain duplicate values, but for the sake of this problem, assume that dictionary might have duplicate values. (Sometimes interviewer tricks the question, to see, how you will handle it.)
+
+![problem](/images/p24/problem.png)
+
+```
+alphabet: b f g q
+
+bgg
+fbq
+fqf
+ffq
+gfg
+```
+
+So first let's try to understand the inputs here so we can make some assumptions. 
+We can see if we compare the first letter of these words we know that we can make an assumption that word[0] goes before word[1] ie `b -> f`. 
+
+If we were to iterate thought all the words and all the chars we can build up a list of associations. We have to be careful however because we can't really compare letters other than the first of the word. For example if we compare `bgg` and `fbq`
+
+![bad connection](/images/p24/bad_connections.png)
+
+```
+word 0 & 1
+
+bgg
+fbq
+---------
+b -> f
+g -> b <-- loop
+g -> q
+
+word 1 & 2
+
+fbq
+fqf
+---------
+
+f -> f
+b -> q <-- loop
+q -> f
+```
+
+As you can see above creates a loop
+g -> b in our first 2 words
+b -> q in our second
+
+We can only look at the first letter of the word. But what about if the first letter is the same? Well that means the next letter is the tiebreaker. We can keep iterating though both words until we find that tiebreaker and those char can in turn make a valid connection. Once we have that connection we should stop processing char since we can't make a valid assumption in the ordering of the letters. 
+
+![good connection](/images/p24/good_connections.png)
+
+So we have a list of associations now. At this point we can see these associations can be represented by a graph. In a previous post we've looked at [generating course schedules given dependencies]({{< relref "p20_course_schedule.md" >}}) using dfs and topological sort. Topological sort only works for a graph with no cycles. Recall earlier we made an effort in our connection generation to avoid loops. If we simply traverse our graph using dfs we'll be able to generate a proper ordering of the letters in this alien dictionary
+
+We have another scenario we need to think about. What happens in the case where we have letters that don't have an association?
+For example 
+
+```
+['z', 'z'] -> this should just return 'z'
+```
+
+Recall in dfs graph algorithms we usually have an for loop before our dfs call to make sure we traverse all nodes that aren't connected. In our case we need to populate our graph with all the chars that aren't connected. We can iterate through every char in every word and generate a set. We can then use this set and associations to represent our graph
+
+![final graph](/images/p24/final_graph.png)
+
+```python
+def build_graph(words):
+	for word in words:
+		for char in word:
+			char_list.add(char)
+	
+	words_len = len(words)
+	for i in range(words_len - 1):
+		in_word = words[i]
+		out_word = words[i + 1]
+		
+		min_char_to_compare = min(len(in_word), len(out_word))
+		
+		for x in range(min_char_to_compare):
+			# insert a relationship
+			if in_word[x] != out_word[x]:
+				adj_list[in_word[x]].add(out_word[x])
+				
+				# important to stop here because we can't
+				# guarentee that the next comparison is true
+				break
+```
+
+So now that we have the graph we can use the same dfs topological sort algorithm from the course scheduling problem to wire everything up. 
+
+![topo sort](/images/p24/topo_sort.png)
+
+```python
+from collections import defaultdict
+
+def build_graph(words):
+	# we need to handle all chars seen from words. 
+	# ex if we have mismatched word sizes we still 
+	# take care of leftover letters
+	for word in words:
+		for char in word:
+			char_list.add(char)
+	
+	words_len = len(words)
+	for i in range(words_len - 1):
+		in_word = words[i]
+		out_word = words[i + 1]
+		
+		min_char_to_compare = min(len(in_word), len(out_word))
+		
+		for x in range(min_char_to_compare):
+			# insert a relationship
+			if in_word[x] != out_word[x]:
+				adj_list[in_word[x]].add(out_word[x])
+				
+				# important to stop here because we can't
+				# guarentee that the next comparison is true
+				# ex.
+				break
+				
+			
+def dfs_topo_sort(node):
+	if node in seen:
+		if seen[node] == "VISITING":
+			has_cycle[0] = True
+			
+		return
+	
+	seen[node] = "VISITING"
+	
+	for neighbor in adj_list[node]:
+		dfs_topo_sort(neighbor)
+	
+	# we are visiting in reverse order so append to the front
+	letter_order.append(node)
+	seen[node] = "VISITED"
+	
+# build adj list
+adj_list = defaultdict(set)
+char_list = set()
+build_graph(words)
+
+# dfs topological sort on this graph
+seen = {}
+letter_order = []
+has_cycle = [False]
+
+for node in char_list:
+	if node not in seen:
+		dfs_topo_sort(node)
+
+if not letter_order or has_cycle[0]:
+	return ""
+
+# DFS returns results in reversed order
+return "".join(reversed(letter_order))
+```
+
+The time complexity of traversing the graph is `O(V+E)`
