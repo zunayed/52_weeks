@@ -12,49 +12,26 @@ Problem Statement:
 
 ![problem](/images/p24/problem.png)
 
-```
-alphabet: b f g q
-
-bgg
-fbq
-fqf
-ffq
-gfg
-```
 
 So first let's try to understand the inputs here so we can make some assumptions. 
-We can see if we compare the first letter of these words we know that we can make an assumption that word[0] goes before word[1] ie `b -> f`. 
-
-If we were to iterate thought all the words and all the chars we can build up a list of associations. We have to be careful however because we can't really compare letters other than the first of the word. For example if we compare `bgg` and `fbq`
 
 ![bad connection](/images/p24/bad_connections.png)
 
-```
-word 0 & 1
+We can see if we compare the first letter of these words we know that we can make an assumption that word[0] goes before word[1] ie `b -> f`. 
 
-bgg
-fbq
----------
-b -> f
-g -> b <-- loop
-g -> q
+If we were to iterate thought all the words and all the chars we can build up a list of associations. We have to be careful however because we can't really compare letters other than the first of the word. For example if we compare `fqf` and `ffq` we end up with a loop that doesn't make any sense ie `f > q` and `q > f`.
 
-word 1 & 2
+We can definitely compare the first letters of a pair of words but the remaining letters don't give us an accurate portrayal of the dictionary.  But what about the case if some of the letters the same?  Well that means the next letter is the tiebreaker. We can keep iterating though both words until we find that tiebreaker and those char can in turn make a valid connection. Once we have that connection we should stop processing char since we can't make a valid assumption in the ordering of the letters. 
 
-fbq
-fqf
----------
+![tie breaker](/images/p24/tie_breaker.png)
 
-f -> f
-b -> q <-- loop
-q -> f
-```
 
-As you can see above creates a loop
-g -> b in our first 2 words
-b -> q in our second
+Let's recap our assumptions so far for making connections  
 
-We can only look at the first letter of the word. But what about if the first letter is the same? Well that means the next letter is the tiebreaker. We can keep iterating though both words until we find that tiebreaker and those char can in turn make a valid connection. Once we have that connection we should stop processing char since we can't make a valid assumption in the ordering of the letters. 
+1. compare the first letter of each word. `word1[0] < word2[0]`
+2. if there is a tie find the tiebreaker. `word1[index_of_first_diff_char] < word1[index_of_first_diff_char]`
+
+Using our assumptions lets build this connection mapping for our input
 
 ![good connection](/images/p24/good_connections.png)
 
@@ -63,13 +40,12 @@ So we have a list of associations now. At this point we can see these associatio
 We have another scenario we need to think about. What happens in the case where we have letters that don't have an association?
 For example 
 
-```
+```python
 ['z', 'z'] -> this should just return 'z'
 ```
 
 Recall in dfs graph algorithms we usually have an for loop before our dfs call to make sure we traverse all nodes that aren't connected. In our case we need to populate our graph with all the chars that aren't connected. We can iterate through every char in every word and generate a set. We can then use this set and associations to represent our graph
 
-![final graph](/images/p24/final_graph.png)
 
 ```python
 def build_graph(words):
@@ -96,7 +72,7 @@ def build_graph(words):
 
 So now that we have the graph we can use the same dfs topological sort algorithm from the course scheduling problem to wire everything up. 
 
-![topo sort](/images/p24/topo_sort.png)
+![final graph](/images/p24/final_graph.png)
 
 ```python
 from collections import defaultdict
