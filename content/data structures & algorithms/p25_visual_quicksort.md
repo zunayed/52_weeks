@@ -9,7 +9,6 @@ tags = ["sorting"]
 There are plenty of resources to learn quicksort but I didn't feel like I fully understood the details until I drew out the recursion tree and actually stepped through the partition function. 
 
 ```python
-
 def quicksort(array):
     def partition(begin, end):
         pivot = begin
