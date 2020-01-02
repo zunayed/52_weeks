@@ -3,34 +3,26 @@
 <body id="index">
 	<div class="container">
 
-	<p class="about">
-		My name is <b class="header-name">Zunayed Ali Morsalin</b> and I’m an engineer that grew up in Brooklyn. This is a place to store ideas and projects. 
-	</p>
+		<p class="about">
+			My name is <b class="header-name">Zunayed Ali Morsalin</b> and I’m an engineer that grew up in Brooklyn. This is a place to store ideas and projects. 
+		</p>
 
-{{ range .Pages.GroupBy "Section" }}
-<h3>{{ .Key }}</h3>
-	<ul id="post-list">
-    {{ range .Pages }}
-    <li> 
-			&raquo; <a href="{{ .Permalink }}">{{ .Title }}</a> 
-			    {{/* Display taxonomies */}}
-    {{- range $taxo, $taxonomy := .Site.Taxonomies }}
-    {{- $elems := $.Param $taxo }}
-    {{- if $elems }}
-    {{ $taxo | humanize }} &#x5b;
-    {{- range $name := $elems }}
-    {{- with $.Site.GetPage (lower (printf "/%s/%s" $taxo (urlize $name))) }}
-    <a href="{{ .Permalink }}">{{ $name }}</a>
-    {{- end }}
-    {{- end }}
-    &#x5d;
-    {{- end }}
-    {{- end }}
+		{{ range .Sections}}
+		<hr/>
+		<h3>{{ .Title }}</h3>
+		<ul id="post-list">
+			{{ range .Pages }}
+			<li>
+				› <a href="{{ .RelPermalink}}">{{ .Title }}</a>
+				<!--><div>[{{ with .Params.tags }}{{ delimit . ", " }}{{ end }}]</div>A-->
+			</li>
+			{{ end }}
+			<ul>
+			</ul>
+		</ul>
+		{{ end }}
 
-		</li>
-    {{ end }}
-</ul>
-{{ end }}
+
 
 
 </body>
