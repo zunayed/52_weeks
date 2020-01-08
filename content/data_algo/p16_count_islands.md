@@ -3,6 +3,7 @@ date = "2019-09-21"
 draft = false 
 title = "Count number of islands in a grid"
 tags = [ "graphs"]
+series = "graphs"
 +++
 
 Problem statement

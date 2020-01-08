@@ -3,6 +3,7 @@ date = "2019-10-05"
 draft = false
 title = "Shortest path in grid w/keys and door"
 tags = ["graph"]
+series = "graphs"
 +++
 
 Problem statement

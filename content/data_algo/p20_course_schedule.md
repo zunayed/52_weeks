@@ -3,6 +3,7 @@ date = "2019-10-19"
 draft = false
 title = "Generate course schedule w/ dependencies"
 tags = ["graphs"]
+series = "graphs"
 +++
 
 Problem Statement:

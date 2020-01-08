@@ -3,6 +3,7 @@ date = "2019-11-18"
 draft = false
 title = "Quicksort - step by step"
 tags = ["sorting"]
+series = "sorting"
 +++
 
 

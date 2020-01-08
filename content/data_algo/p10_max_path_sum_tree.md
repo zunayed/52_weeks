@@ -2,7 +2,7 @@
 date = "2019-08-03"
 draft = false
 title = "Binary Tree Maximum Path Sum"
-tags = [ "tree", "recursion"]
+series = "trees"
 
 +++
 

@@ -3,6 +3,7 @@ date = "2019-08-17"
 draft = false 
 title = "Least common ancestor of a Binary Tree"
 tags = [ "trees", "recursion"]
+series = "trees"
 +++
 
 Problem statement

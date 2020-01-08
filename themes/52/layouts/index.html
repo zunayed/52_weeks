@@ -1,30 +1,86 @@
 {{ partial "header.html" . }}
 
 <body id="index">
-	<div class="container">
+	<div class="index-container">
+    <div class="aboutme">
+		<p> My name is <b class="header-name">Zunayed Ali Morsalin</b> and I’m an engineer that grew up in Brooklyn. This is a place to store ideas and projects. </p>
+    </div>
 
-		<p class="about">
-			My name is <b class="header-name">Zunayed Ali Morsalin</b> and I’m an engineer that grew up in Brooklyn. This is a place to store ideas and projects. 
-		</p>
+    <hr/>
 
-		{{ range .Sections}}
-		<hr/>
-		<h3>{{ .Title }}</h3>
-		<ul id="post-list">
-			{{ range .Pages }}
-			<li>
-				› <a href="{{ .RelPermalink}}">{{ .Title }}</a>
-				<!--><div>[{{ with .Params.tags }}{{ delimit . ", " }}{{ end }}]</div>A-->
-			</li>
-			{{ end }}
-			<ul>
-			</ul>
-		</ul>
-		{{ end }}
+    <div class="index-flex-item">
+      <ul id="post-list">
+        <hr/>
+        <h3>Posts</h3>
 
+        {{ range where .Site.Pages "Params.series" "==" "blog" }}
+        <li> 
+          <a href="{{ .RelPermalink}}">» {{ .Title }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
 
+    <div class="index-flex-item">
+      <ul id="post-list">
+        <hr/>
+        <h3>Data Structures, Algorithms & Puzzles</h3>
+        <p> Below you will find some visualized solutions to random problems and algos</p>
 
+      </ul>
+    </div>
+      
 
+    <div class="index-flex-item">
+      <ul id="post-list">
+        <hr/>
+        <h3>Graphs</h3>
+
+        {{ range where .Site.Pages "Params.series" "==" "graphs" }}
+        <li> 
+          <a href="{{ .RelPermalink}}">» {{ .Title }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+    <div class="index-flex-item">
+      <ul id="post-list">
+        <hr/>
+        <h3>Trees</h3>
+
+        {{ range where .Site.Pages "Params.series" "==" "trees" }}
+        <li> 
+          <a href="{{ .RelPermalink}}">» {{ .Title }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+
+    <div class="index-flex-item">
+      <ul id="post-list">
+        <hr/>
+        <h3>Recursion</h3>
+
+        {{ range where .Site.Pages "Params.series" "==" "recursion" }}
+        <li> 
+          <a href="{{ .RelPermalink}}">» {{ .Title }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+
+    <div class="index-flex-item">
+      <ul id="post-list">
+        <hr/>
+        <h3>Sorting</h3>
+        {{ range where .Site.Pages "Params.series" "==" "sorting" }}
+        <li> 
+          <a href="{{ .RelPermalink}}">» {{ .Title }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+    
+  </div>
 </body>
 
-{{ partial "footer.html" . }}

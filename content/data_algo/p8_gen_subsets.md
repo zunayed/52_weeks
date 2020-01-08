@@ -3,6 +3,7 @@ date = "2019-07-28"
 draft = false
 title = "Generate all subsets of a set recursively"
 tags = [ "recursion"]
+series = "recursion"
 +++
 
 Problem statement

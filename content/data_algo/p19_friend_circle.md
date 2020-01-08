@@ -3,6 +3,7 @@ date = "2019-10-10"
 draft = false
 title = "Number of friend circles given a N x N matrix"
 tags = ["graphs"]
+series = "graphs"
 +++
 
 Problem Statement:

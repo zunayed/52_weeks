@@ -3,6 +3,7 @@ date = "2019-08-20"
 draft = false
 title = "Shortest path between nodes in a graph"
 tags = [ "graphs"]
+series = "graphs"
 +++
 
 Problem statement
