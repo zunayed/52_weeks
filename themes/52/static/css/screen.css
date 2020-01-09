@@ -153,7 +153,8 @@ header .icon {
 
 footer {
     text-align: left;
-    margin: 0 auto;
+    margin: 1rem auto;
+    padding-left: 1rem;
     border-top: 1px solid #eee;
 }
 
