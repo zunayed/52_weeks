@@ -3,6 +3,7 @@ date = "2019-08-01"
 draft = false
 title = "Count all paths to a point in a grid"
 tags = ["recursion"]
+series = "recursion"
 +++
 
 Problem statement

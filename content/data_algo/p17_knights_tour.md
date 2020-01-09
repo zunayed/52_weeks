@@ -3,6 +3,7 @@ date = "2019-09-25"
 draft = false
 title = "Knights tour on a chess board"
 tags = ["graphs"]
+series = "graphs"
 +++
 
 Problem Statement:

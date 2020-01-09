@@ -3,6 +3,7 @@ date = "2019-08-04"
 draft = false
 title = "Single Value / Unival tree"
 tags = [ "trees", "recursion"]
+series = "trees"
 +++
 
 Problem Statement:

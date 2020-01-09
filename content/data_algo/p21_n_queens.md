@@ -3,6 +3,7 @@ date = "2019-10-23"
 draft = false
 title = "N queens on a chess board"
 tags = ["recursion"]
+series = "recursion"
 +++
 
 Problem Statement:

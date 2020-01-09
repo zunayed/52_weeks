@@ -3,6 +3,7 @@ date = "2019-07-26"
 draft = false
 title = "BST to doubly linked list"
 tags = [ "trees", "linked list"]
+series = "trees"
 +++
 
 Problem statement

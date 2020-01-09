@@ -3,6 +3,7 @@ date = "2017-6-23"
 draft = false
 title = "Google Object Storage notes"
 hidefromhome = true
+series = "blog"
 +++
 
 Object store has multiple ways of getting and setting files. I have listed all the ones I can find in this document.

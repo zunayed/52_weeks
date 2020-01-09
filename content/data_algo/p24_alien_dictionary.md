@@ -3,6 +3,7 @@ date = "2019-11-09"
 draft = false
 title = "Topological sort to order character in an alien dictionary"
 tags = ["graph"]
+series = "graphs"
 +++
 
 Problem Statement:

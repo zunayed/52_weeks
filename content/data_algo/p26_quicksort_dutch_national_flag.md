@@ -3,6 +3,7 @@ date = "2019-11-19"
 draft = false
 title = "Quicksort - Dutch national flag"
 tags = ["sorting"]
+series = "sorting"
 +++
 
 Problem Statement:

@@ -4,7 +4,6 @@ body {
   margin: 0 auto;
   color: #444;
   background: #f5f4f0;
-  max-width: 750px;
 }
 
 h1, h2, h3, h4, h5 {
@@ -40,10 +39,32 @@ p {
   margin: 1rem 0;
 }
 
+.about p {
+  margin: none;
+  padding-inline-start: .5rem;
+}
+
+
 .container {
   margin: 1rem auto;
   padding-left: 1rem;
   padding-right: 1rem;
+  max-width: 750px;
+}
+
+.index-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 950px;
+  margin: 1rem auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.index-flex-item {
+  flex-basis: 50%;
+  min-width: 400px;
+  flex-grow: 1;
 }
 
 hr {

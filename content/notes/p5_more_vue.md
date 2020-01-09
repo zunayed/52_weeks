@@ -2,6 +2,7 @@
 date = "2017-07-17"
 draft = false
 title = "More vue.js"
+series = "blog"
 +++
 
 # Vue Router

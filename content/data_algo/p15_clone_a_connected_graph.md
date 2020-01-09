@@ -3,6 +3,7 @@ date = "2019-09-20"
 draft = false 
 title = "Clone a connected graph"
 tags = [ "graphs"]
+series = "graphs"
 +++
 
 Problem statement

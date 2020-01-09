@@ -3,6 +3,7 @@ date = "2019-10-27"
 draft = false
 title = "Given A Graph, Build A New One With Reversed Edges"
 tags = ["graphs"]
+series = "graphs"
 +++
 
 Problem Statement:

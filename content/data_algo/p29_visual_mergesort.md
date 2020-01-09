@@ -3,6 +3,7 @@ date = "2019-12-08"
 draft = false
 title = "MergeSort - step by step"
 tags = ["sorting"]
+series = "sorting"
 +++
 
 Mergesort is a divide and conquer algorithm. It breaks down an array into halves and solves the problem on the left, solves the problem on the right and then merges those two results together

@@ -2,6 +2,7 @@
 date = "2017-07-23"
 draft = false
 title = "25k cores compute cluster w/Condor & Google Cloud"
+series = "blog"
 +++
 
 # condor setup

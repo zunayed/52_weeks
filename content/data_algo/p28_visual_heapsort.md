@@ -3,6 +3,7 @@ date = "2019-11-21"
 draft = false
 title = "Heapsort - step by step"
 tags = ["sorting"]
+series = "sorting"
 +++
 
 Before we can step through heapsort we need to understand binary heaps / priority queues and their properties. 
