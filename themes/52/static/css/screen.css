@@ -26,9 +26,6 @@ ul {
   padding-inline-start: .5rem;
 }
 
-.about {
-}
-
 #post-list {
   list-style-type: none;
 } 
@@ -41,6 +38,12 @@ li > ul, li > ol {
 p {
   margin: 1rem 0;
 }
+
+.about p {
+  margin: none;
+  padding-inline-start: .5rem;
+}
+
 
 .container {
   margin: 1rem auto;

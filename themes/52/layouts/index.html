@@ -15,7 +15,7 @@
 
         {{ range where .Site.Pages "Params.series" "==" "blog" }}
         <li> 
-          <a href="{{ .RelPermalink}}">» {{ .Title }}</a>
+          » <a href="{{ .RelPermalink}}">{{ .Title }}</a>
         </li>
         {{ end }}
       </ul>
@@ -38,7 +38,7 @@
 
         {{ range where .Site.Pages "Params.series" "==" "graphs" }}
         <li> 
-          <a href="{{ .RelPermalink}}">» {{ .Title }}</a>
+          » <a href="{{ .RelPermalink}}">{{ .Title }}</a>
         </li>
         {{ end }}
       </ul>
@@ -50,7 +50,7 @@
 
         {{ range where .Site.Pages "Params.series" "==" "trees" }}
         <li> 
-          <a href="{{ .RelPermalink}}">» {{ .Title }}</a>
+          » <a href="{{ .RelPermalink}}">{{ .Title }}</a>
         </li>
         {{ end }}
       </ul>
@@ -63,7 +63,7 @@
 
         {{ range where .Site.Pages "Params.series" "==" "recursion" }}
         <li> 
-          <a href="{{ .RelPermalink}}">» {{ .Title }}</a>
+          » <a href="{{ .RelPermalink}}">{{ .Title }}</a>
         </li>
         {{ end }}
       </ul>
@@ -75,7 +75,7 @@
         <h3>Sorting</h3>
         {{ range where .Site.Pages "Params.series" "==" "sorting" }}
         <li> 
-          <a href="{{ .RelPermalink}}">» {{ .Title }}</a>
+          » <a href="{{ .RelPermalink}}">{{ .Title }}</a>
         </li>
         {{ end }}
       </ul>
