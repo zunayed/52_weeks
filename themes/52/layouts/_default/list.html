@@ -1,18 +1,23 @@
-<html>
-	<body>
-		{{ partial "header" (dict "Kind" .Kind "Template" "List") }}
+{{ partial "header.html" . }}
 
-		{{.Content}}
+{{ partial "top_menu_nav.html" . }}
+<body id="index">
+  <div class="list-container">
+    <header>
+      <h1>{{.Title}}</h1>
+    </header>
+    {{.Content}}
 
-		<ul class="posts">
-			{{ range .Pages }}
-			<li>
-				&raquo;
-				<a href="{{ .Permalink }}">{{ .Title }}</a>
-			</li>
-			{{ end }}
-		</ul>
+    <ul class="post-list">
+      {{ range .Pages }}
+      <li>
+        &raquo;
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+  </div>
+</body>
 
-		{{ partial "footer" . }}
-	</body>
-</html>
+{{ partial "footer.html" . }}

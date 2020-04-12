@@ -1,13 +1,10 @@
 {{ partial "header.html" . }}
 
+{{ partial "top_menu_nav.html" . }}
+
 <meta name="Description" content="{{ .Title }}">
 
 <body >
-	<header>
-		<a class="header-name"><b>Zunayed Ali Morsalin</b> </a>
-		<a href="/">Home</a>
-	</header>
-
 	<div class="container post" >
 		<h1 itemprop="headline">{{ .Title }}</h1>
 		<span>
@@ -27,4 +24,5 @@
 	</div>
 
 </body>
+
 {{ partial "footer.html" . }}
