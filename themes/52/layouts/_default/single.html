@@ -1,28 +1,30 @@
 {{ partial "header.html" . }}
 
-{{ partial "top_menu_nav.html" . }}
-
 <meta name="Description" content="{{ .Title }}">
 
-<body >
-	<div class="container post" >
-		<h1 itemprop="headline">{{ .Title }}</h1>
-		<span>
+<body>
+  {{ partial "top_menu_nav.html" . }}
 
-			<div class="taglist">
-				{{ if isset .Params "tags" }} 
-					Tags: 
-				{{ end }}
+  <div class="container post" >
+    <h1 itemprop="headline">{{ .Title }}</h1>
+    <span>
 
-				{{ range .Params.tags }}
+      <div class="taglist">
+        {{ if isset .Params "tags" }} 
+        Tags: 
+        {{ end }}
+
+        {{ range .Params.tags }}
         <a href=/tags/{{ .}}>{{ .}}</a>
-				{{ end }}
-			</div>
+        {{ end }}
+      </div>
 
-			<hr/>
-			{{ .Content }}
-	</div>
+      <hr/>
 
+      {{ .Content }}
+  </div>
+
+  {{ partial "footer.html" . }}
 </body>
 
-{{ partial "footer.html" . }}
+
