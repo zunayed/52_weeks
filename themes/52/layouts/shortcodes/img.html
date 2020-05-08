@@ -1,0 +1,7 @@
+<figure>
+  <picture>
+    <source srcset="/images/{{ .Get "src" }}-2000.{{ .Get "type" }}" media="(min-width: 700px)">
+      <source srcset="/images/{{ .Get "src" }}-500.{{ .Get "type" }}" type="image">
+        <img class="wide-img" src="/images/{{ .Get "src" }}-500.{{ .Get "type" }}" />
+  </picture>
+</figure>
