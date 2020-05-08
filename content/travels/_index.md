@@ -5,5 +5,3 @@ hidefromhome = true
 +++
 
 Some sites I've made to remember travels and sketches.
-Todo - 
-~~Italy~~, Barcelona, Toronto, Seattle + Portland, Salt lake, Acadia

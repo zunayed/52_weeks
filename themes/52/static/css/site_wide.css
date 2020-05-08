@@ -200,11 +200,53 @@ blockquote {
     color: grey;
 }
 
-@media (min-width:450px) {
-    .post img {
-        max-width: 700px;
-    }
+.title { color: red; }
+
+.wide-img {
+    max-width: 100%;
 }
+
+figure {
+    margin: auto;
+}
+
+@media (max-width:700px) {
+    .title { color: green; }
+}
+
+/* 2 images side by side */
+
+.image-row {
+    width:100%;
+}
+
+.double-image{
+    float:left;
+}
+
+.img{
+    float:left;
+}
+.imgContainer{
+    float:left;
+}
+
+.image-row {
+    width:100%;
+    height:50%;
+}
+.image-row figure {
+    width:50%;
+    height:100%;
+    float:left;
+}
+
+.image-row-triple figure {
+    width:33%;
+    height:100%;
+    float:left;
+}
+
 
 .highlight .hll { background-color: #49483e }
 .highlight  { background: #272822; color: #f8f8f2 }

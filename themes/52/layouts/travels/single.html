@@ -5,10 +5,10 @@
 <meta name="Description" content="{{ .Title }}">
 
 <body >
-	<div class="container post" >
-		<h1 itemprop="headline">{{ .Title }}</h1>
+	<div class="container" >
 		<span>
 
+		  <h1 itemprop="headline">{{ .Title }}</h1>
 			<div class="taglist">
 				{{ if isset .Params "tags" }} 
 					Tags: 
@@ -20,8 +20,11 @@
 			</div>
 
 			<hr/>
-			{{ .Content }}
 	</div>
+
+  <div class="photo-blog">
+    {{ .Content }}
+  </div>
 
 </body>
 
