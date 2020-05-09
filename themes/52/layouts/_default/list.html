@@ -5,10 +5,10 @@
 <meta name="Description" content="{{ .Title }}">
 
 <body>
-  <div class="list-container">
-    <header>
-      <h1>{{.Title}}</h1>
-    </header>
+  <div class="topic-list">
+    <h1>{{.Title}}</h1>
+    <hr/>
+
     {{.Content}}
 
     <ul class="post-list">
@@ -19,7 +19,6 @@
       </li>
       {{ end }}
     </ul>
-  </div>
   </div>
 </body>
 

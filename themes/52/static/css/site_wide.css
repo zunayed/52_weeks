@@ -196,6 +196,13 @@ blockquote {
     margin: auto;
 }
 
+.topic-list {
+    max-width: 750px;
+    padding: 1rem;
+    padding-bottom: 0;
+    margin: 0 auto;
+}
+
 .taglist {
     color: grey;
 }
