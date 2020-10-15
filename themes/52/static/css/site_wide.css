@@ -249,9 +249,65 @@ figure {
 }
 
 .image-row-triple figure {
-    width:33%;
+    width:33.333%;
     height:100%;
     float:left;
+}
+
+.photo-blog {
+    width: 97%;
+    margin: 0 auto 4rem;
+}
+
+.photo-blog img {
+    width: 100%;
+}
+
+.photo-text-overlay {
+    font-size: 23px;
+    color: #fff;
+    font-family: arial;
+    position: relative;
+    display: inline-block;
+    vertical-align: bottom;
+    line-height: normal;     
+}
+
+figcaption {
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+    color: #FFF;
+    color: white;
+    font-size: 3em;
+    font-weight: bold;
+    padding-left: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/*
+figcaption {
+    max-width: 400px;
+    display: block;
+    float: left;
+    position: absolute;
+    top: 0;
+}
+*/
+
+figure {
+    position: relative;
+    float: left;
+}
+
+@media all and (max-width:700px) {
+    body {
+        margin: 0;
+    }
+    .photo-blog {
+        width: 100%;
+    }
 }
 
 
