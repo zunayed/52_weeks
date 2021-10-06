@@ -4,7 +4,6 @@
   <div class="index-container">
     <div class="aboutme">
       <p> My name is <b class="header-name">Zunayed Ali Morsalin</b> and I’m an engineer that grew up in Brooklyn. This is a place to store ideas and projects.
-      Check out some cool photos <a href="/travels">here!</a><p/>
     </div>
 
     <hr/>
@@ -84,6 +83,17 @@
       </ul>
     </div>
 
+    <div class="index-flex-item">
+      <ul class="post-list">
+        <hr/>
+        <h3>Heaps</h3>
+        {{ range where .Site.Pages "Params.series" "==" "heaps" }}
+        <li> 
+          » <a href="{{ .RelPermalink}}">{{ .Title }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
 
   </div>
   {{ partial "footer.html" . }}
