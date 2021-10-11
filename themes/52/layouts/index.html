@@ -95,6 +95,18 @@
       </ul>
     </div>
 
+    <div class="index-flex-item">
+      <ul class="post-list">
+        <hr/>
+        <h3>Searching</h3>
+        {{ range where .Site.Pages "Params.series" "==" "searching" }}
+        <li> 
+          » <a href="{{ .RelPermalink}}">{{ .Title }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+
   </div>
   {{ partial "footer.html" . }}
 </body>
