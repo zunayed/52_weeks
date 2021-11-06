@@ -10,3 +10,5 @@ build:
 	hugo
 serve:
 	hugo serve
+deploy:
+	firebase deploy
