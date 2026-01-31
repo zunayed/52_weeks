@@ -1,9 +1,17 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
 body {
     font-family: 'Helvetica', 'Arial', sans-serif;
     line-height: 1.5;
-    margin: 0 auto;
+    margin: 0;
     color: #444;
     background: #f5f4f0;
+    width: 100%;
 }
 
 h1, h2, h3, h4, h5 {
@@ -28,6 +36,8 @@ ul {
 
 .post-list {
     list-style-type: none;
+    padding-inline-start: 0;
+    margin-inline: 0;
 } 
 
 li > ul, li > ol {
@@ -81,21 +91,21 @@ p {
 
 
 .container {
+    width: min(100%, 750px);
     margin: 1rem auto;
     padding-left: 1rem;
     padding-right: 1rem;
-    max-width: 750px;
 }
 
 .list-container {
-    max-width: 950px;
+    width: min(100%, 950px);
     margin: 1rem auto;
     padding-left: 1rem;
     padding-right: 1rem;
 }
 
 .footer-container {
-    max-width: 750px;
+    width: min(100%, 750px);
     margin: 1rem auto;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -105,10 +115,10 @@ p {
 .index-container {
     display: flex;
     flex-wrap: wrap;
-    max-width: 950px;
+    width: min(100%, 950px);
     margin: 1rem auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: calc(1rem + env(safe-area-inset-left, 0px));
+    padding-right: calc(1rem + env(safe-area-inset-right, 0px));
     gap: 1rem;
 }
 
@@ -213,11 +223,13 @@ a, a:hover {
 }
 
 #index {
-    display: table;
+    display: block;
+    width: 100%;
+    margin: 0;
 }
 
 #index .container {
-    display: table-cell;
+    display: block;
     padding: 1em;
 }
 
