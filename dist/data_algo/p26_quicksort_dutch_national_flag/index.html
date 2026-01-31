@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="en-US"> <head><meta charset="utf-8"><title>Quicksort - Dutch national flag</title><link rel="canonical" href="https://zunayed.dev/"><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"><meta name="Description" content="Quicksort - Dutch national flag"><link rel="icon" href="/favicon.ico" type="image/x-icon"><link href="https://fonts.googleapis.com/css?family=Inconsolata|Merriweather" rel="stylesheet"><style>body{font-family:Helvetica,Arial,sans-serif;line-height:1.5;margin:0 auto;color:#444;background:#f5f4f0}h1,h2,h3,h4,h5{font-family:Merriweather,sans-serif;color:#000;line-height:1.2;margin-bottom:1rem;margin-top:2rem}h1{margin:0}h3{margin-top:.25rem}ul{padding-inline-start:.5rem}.post-list{list-style-type:none}li>ul,li>ol{margin-top:0;margin-bottom:0}p{margin:1rem 0}.about p{margin:none;padding-inline-start:.5rem}.container{margin:1rem auto;padding-left:1rem;padding-right:1rem;max-width:750px}.list-container{max-width:950px;margin:1rem auto;padding-left:1rem;padding-right:1rem}.footer-container{max-width:750px;margin:1rem auto;padding-left:1rem;padding-right:1rem;text-align:center}.index-container{display:flex;flex-wrap:wrap;max-width:950px;margin:1rem auto;padding-left:1rem;padding-right:1rem;gap:1rem}.index-flex-item{flex-basis:calc(50% - .5rem);min-width:400px;flex-grow:1}hr{margin:1rem 0;border:0 solid #1e00105c;border-top-width:1px}abbr{text-decoration:none}code,pre,.highlight{font-family:Inconsolata,monospace;font-size:.85rem;line-height:1.4}p>code,li>code{background:#282a36;color:#f8f8f2;white-space:pre;margin:0;padding:.2em 0;border-radius:.25rem}p>code:before,p>code:after,li>code:before,li>code:after{letter-spacing:-.2em;content:" "}pre,.highlight{border-radius:.25rem;overflow-x:auto;overflow-y:auto;padding:.25rem;margin:0}.highlight{margin-left:-.5rem;margin-right:-.5rem}.astro-code{margin-left:-.5rem;margin-right:-.5rem;padding:.5rem}a{text-decoration:none;color:#000;border-bottom:2px solid #e91e63}a:hover{border-color:pink;text-shadow:0 1px 0 rgba(255,192,203,.5)}.strike{text-decoration:line-through}.links{text-align:center;margin-bottom:0}header{max-width:750px;padding:1rem;padding-bottom:0;margin:0 auto}header a,header span{margin-right:.5rem}header .icon{font-size:1.5rem}.header-name{border-bottom:None;color:#a00}a,a:hover{transition:color .2s ease-in-out 0s,border-color .2s ease-in-out 0s,text-shadow .2s ease-in-out 0s}#index{display:table}#index .container{display:table-cell;padding:1em}.post img{align-items:center;padding:1em 0;max-width:100%}blockquote{border-left:.25em solid #dfe2e5;color:#6a737d;padding:0 1em;margin:auto}.taglist{color:gray}.title{color:red}.wide-img{max-width:100%}figure{margin:auto}.heatmap-widget{padding:0 0 1rem;margin:0 0 1rem}.counter-widget{padding:1rem;border:1px solid #ccc;border-radius:8px;margin:1rem 0;text-align:center}.counter-button{padding:.5rem 1rem;background:#e91e63;color:#fff;border:none;border-radius:4px;cursor:pointer}@media(max-width:700px){.title{color:green}}.image-row{width:100%}.double-image,.img,.imgContainer{float:left}.image-row{width:100%;height:50%}.image-row figure{width:50%;height:100%;float:left}.image-row-triple figure{width:33%;height:100%;float:left}@media(min-width:451px)and (max-width:1000px){.index-flex-item{min-width:340px!important}}@media(max-width:450px){.index-flex-item{min-width:100%!important}ul#post-list li{font-size:14px;margin-bottom:5px}h1{font-size:24px}}
+</style></head> <body> <header> <a href="/" class="header-name"><b>Zunayed Ali</b></a> <a href="/">Home</a> <a href="/bookshelf">Bookshelf</a> <a href="/activity">Activity</a> <a href="/">About</a> </header>  <div class="container post"> <h1 itemprop="headline">Quicksort - Dutch national flag</h1> <div class="taglist"> 
+Tags:
+<a href="/tags/sorting">sorting</a> </div> <hr> <p>Problem Statement:</p>
+<blockquote>
+<p>Given an array with n objects colored red, white or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white and blue. Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively.<br>
+Could you come up with a one-pass algorithm using only constant space?</p>
+</blockquote>
+<p><img src="/images/p26/problem.png" alt="problem">
+<img src="/images/p26/flag.png" alt="problem"></p>
+<p>So the easier solution would involve iterating through the original array and count the number of colored objects and just overwriting the original array in a second pass.</p>
+<p>To be able to solve this problem I’d recommend brushing up on [quicksort]({{&#x3C; relref “p25_visual_quicksort.md” >}}). If you recall the partition step of quicksort has some interesting effects. It puts all the smaller elements of the pivot to the left and all elements larger to the right.</p>
+<p><img src="/images/p26/pivot.png" alt="pivot"></p>
+<p>Using this idea we can solve this problem with 2 passes <code>O(~2N)</code> time complexity and <code>O(1)</code> space.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#BD93F9">RED</span><span style="color:#FF79C6"> =</span><span style="color:#BD93F9"> 0</span></span>
+<span class="line"><span style="color:#BD93F9">WHITE</span><span style="color:#FF79C6"> =</span><span style="color:#BD93F9"> 1</span></span>
+<span class="line"><span style="color:#BD93F9">BLUE</span><span style="color:#FF79C6"> =</span><span style="color:#BD93F9"> 2</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">def</span><span style="color:#50FA7B"> sortColors</span><span style="color:#F8F8F2">(</span><span style="color:#FFB86C;font-style:italic">nums</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> List[</span><span style="color:#8BE9FD;font-style:italic">int</span><span style="color:#F8F8F2">]) </span><span style="color:#FF79C6">-></span><span style="color:#BD93F9"> None</span><span style="color:#F8F8F2">:</span></span>
+<span class="line"><span style="color:#6272A4">    # first pass organize all red</span></span>
+<span class="line"><span style="color:#F8F8F2">    end_of_red </span><span style="color:#FF79C6">=</span><span style="color:#BD93F9"> 0</span></span>
+<span class="line"><span style="color:#F8F8F2">    </span></span>
+<span class="line"><span style="color:#FF79C6">    for</span><span style="color:#F8F8F2"> x </span><span style="color:#FF79C6">in</span><span style="color:#8BE9FD"> range</span><span style="color:#F8F8F2">(</span><span style="color:#8BE9FD">len</span><span style="color:#F8F8F2">(nums)):</span></span>
+<span class="line"><span style="color:#FF79C6">        if</span><span style="color:#F8F8F2"> nums[x] </span><span style="color:#FF79C6">==</span><span style="color:#BD93F9"> RED</span><span style="color:#F8F8F2">:</span></span>
+<span class="line"><span style="color:#F8F8F2">            nums[end_of_red], nums[x] </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> nums[x], nums[end_of_red]</span></span>
+<span class="line"><span style="color:#F8F8F2">            end_of_red </span><span style="color:#FF79C6">+=</span><span style="color:#BD93F9"> 1</span></span>
+<span class="line"><span style="color:#F8F8F2">            </span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    # second pass organize all white</span></span>
+<span class="line"><span style="color:#F8F8F2">    start_of_white </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> end_of_red</span></span>
+<span class="line"><span style="color:#F8F8F2">    </span></span>
+<span class="line"><span style="color:#FF79C6">    for</span><span style="color:#F8F8F2"> x </span><span style="color:#FF79C6">in</span><span style="color:#8BE9FD"> range</span><span style="color:#F8F8F2">(start_of_white, </span><span style="color:#8BE9FD">len</span><span style="color:#F8F8F2">(nums)): </span></span>
+<span class="line"><span style="color:#FF79C6">        if</span><span style="color:#F8F8F2"> nums[x] </span><span style="color:#FF79C6">==</span><span style="color:#BD93F9"> WHITE</span><span style="color:#F8F8F2">:</span></span>
+<span class="line"><span style="color:#F8F8F2">            nums[start_of_white], nums[x] </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> nums[x], nums[start_of_white]</span></span>
+<span class="line"><span style="color:#F8F8F2">            start_of_white </span><span style="color:#FF79C6">+=</span><span style="color:#BD93F9"> 1</span></span></code></pre>
+<p>Let’s try to modify that partition function to organize our colors in one pass. Since we are really only sorting 3 numbers/colors we can keep track of where we’re inserting red objects in the front and where we are inserting blue objects in the back.</p>
+<p><img src="/images/p26/example.png" alt="example"></p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#BD93F9">RED</span><span style="color:#FF79C6"> =</span><span style="color:#BD93F9"> 0</span></span>
+<span class="line"><span style="color:#BD93F9">WHITE</span><span style="color:#FF79C6"> =</span><span style="color:#BD93F9"> 1</span></span>
+<span class="line"><span style="color:#BD93F9">BLUE</span><span style="color:#FF79C6"> =</span><span style="color:#BD93F9"> 2</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">def</span><span style="color:#50FA7B"> sortColors</span><span style="color:#F8F8F2">(</span><span style="color:#FFB86C;font-style:italic">nums</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> List[</span><span style="color:#8BE9FD;font-style:italic">int</span><span style="color:#F8F8F2">]) </span><span style="color:#FF79C6">-></span><span style="color:#BD93F9"> None</span><span style="color:#F8F8F2">:</span></span>
+<span class="line"><span style="color:#F8F8F2">    p1 </span><span style="color:#FF79C6">=</span><span style="color:#BD93F9"> 0</span><span style="color:#6272A4">                  # end of red colors</span></span>
+<span class="line"><span style="color:#F8F8F2">    curr </span><span style="color:#FF79C6">=</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">                </span></span>
+<span class="line"><span style="color:#F8F8F2">    p2 </span><span style="color:#FF79C6">=</span><span style="color:#8BE9FD"> len</span><span style="color:#F8F8F2">(nums) </span><span style="color:#FF79C6">-</span><span style="color:#BD93F9"> 1</span><span style="color:#6272A4">      # start of blue colors</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    while</span><span style="color:#F8F8F2"> curr </span><span style="color:#FF79C6">&#x3C;=</span><span style="color:#F8F8F2"> p2:</span></span>
+<span class="line"><span style="color:#FF79C6">        if</span><span style="color:#F8F8F2"> nums[curr] </span><span style="color:#FF79C6">==</span><span style="color:#BD93F9"> RED</span><span style="color:#F8F8F2">:</span></span>
+<span class="line"><span style="color:#6272A4">            # swap curr and p1 and move p1 forward</span></span>
+<span class="line"><span style="color:#F8F8F2">            nums[curr], nums[p1] </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> nums[p1], nums[curr]</span></span>
+<span class="line"><span style="color:#F8F8F2">            p1 </span><span style="color:#FF79C6">+=</span><span style="color:#BD93F9"> 1</span></span>
+<span class="line"><span style="color:#F8F8F2">            curr </span><span style="color:#FF79C6">+=</span><span style="color:#BD93F9"> 1</span></span>
+<span class="line"><span style="color:#FF79C6">        elif</span><span style="color:#F8F8F2"> nums[curr] </span><span style="color:#FF79C6">==</span><span style="color:#BD93F9"> BLUE</span><span style="color:#F8F8F2">:</span></span>
+<span class="line"><span style="color:#6272A4">            # swap curr and p2 and move p2 back</span></span>
+<span class="line"><span style="color:#F8F8F2">            nums[curr], nums[p2] </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> nums[p2], nums[curr]</span></span>
+<span class="line"><span style="color:#F8F8F2">            p2 </span><span style="color:#FF79C6">-=</span><span style="color:#BD93F9"> 1</span></span>
+<span class="line"><span style="color:#FF79C6">        else</span><span style="color:#F8F8F2">:   </span></span>
+<span class="line"><span style="color:#F8F8F2">            curr </span><span style="color:#FF79C6">+=</span><span style="color:#BD93F9"> 1</span></span></code></pre> </div> <footer class="footer-container">
+--------------
+<br> <div class="contact"> <p> <code>zunayed@gmail.com</code> <br> <a href="https://www.github.com/zunayed">github.com/zunayed</a><br> </p> </div> </footer> <!-- Preserving original scripts --> <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@15.1.1/dist/lazyload.min.js"></script> <script>
+    var lazyLoadInstance = new LazyLoad({
+        elements_selector: ".lazy"
+    });
+</script> <!-- Global site tag (gtag.js) - Google Analytics --> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-51057520-2"></script> <script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-51057520-2');
+</script>  </body></html>

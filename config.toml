@@ -1,7 +1,0 @@
-languageCode = "en-us"
-title = "zunayed.dev"
-baseURL = ""
-theme = "52"
-# pygmentsuseclasses = "true"
-pygmentsCodeFences = "true"
-ignoreFiles = ["\\.git/", "\\node_modules/", "subprojects/*", "^(.*/subprojects/)$"]

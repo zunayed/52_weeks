@@ -1,0 +1,32 @@
+---
+import '../styles/global.css';
+import TopNav from '../components/TopNav.astro';
+
+interface Props {
+	title?: string;
+    description?: string;
+    bodyId?: string;
+    bodyClass?: string;
+}
+
+const { title = "Zunayed Ali", description = "Zunayed Ali Morsalin's website", bodyId, bodyClass } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en-US">
+	<head>
+		<meta charset="utf-8">
+        <title>{title}</title>
+        <link rel="canonical" href={Astro.site}>
+        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+        <meta name="Description" content={description}>
+    
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|Merriweather" rel="stylesheet">
+	</head>
+	<body id={bodyId} class={bodyClass}>
+		{bodyId !== 'index' && <TopNav />}
+		<slot />
+	</body>
+</html>

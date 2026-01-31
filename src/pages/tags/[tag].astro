@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/Footer.astro';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('posts');
+  
+  const tags = new Set<string>();
+  allPosts.forEach(post => {
+    if (post.data.tags) {
+      post.data.tags.forEach(tag => tags.add(tag));
+    }
+  });
+
+  return Array.from(tags).map(tag => {
+    const posts = allPosts.filter(p => p.data.tags && p.data.tags.includes(tag));
+    return {
+      params: { tag },
+      props: { posts, tag },
+    };
+  });
+}
+
+const { tag, posts } = Astro.props;
+---
+
+<Layout title={`Tag: ${tag}`}>
+  
+  <div class="list-container">
+    <header>
+      <h1>Tag: {tag}</h1>
+    </header>
+    
+    <ul class="post-list">
+      {posts.map(post => (
+      <li>
+        &raquo;
+        <a href={`/${post.slug}`}>{post.data.title}</a>
+      </li>
+      ))}
+    </ul>
+  </div>
+
+  <Footer />
+</Layout>

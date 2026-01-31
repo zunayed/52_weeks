@@ -1,0 +1,108 @@
+<!DOCTYPE html><html lang="en-US"> <head><meta charset="utf-8"><title>Generate course schedule w/ dependencies</title><link rel="canonical" href="https://zunayed.dev/"><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"><meta name="Description" content="Generate course schedule w/ dependencies"><link rel="icon" href="/favicon.ico" type="image/x-icon"><link href="https://fonts.googleapis.com/css?family=Inconsolata|Merriweather" rel="stylesheet"><style>body{font-family:Helvetica,Arial,sans-serif;line-height:1.5;margin:0 auto;color:#444;background:#f5f4f0}h1,h2,h3,h4,h5{font-family:Merriweather,sans-serif;color:#000;line-height:1.2;margin-bottom:1rem;margin-top:2rem}h1{margin:0}h3{margin-top:.25rem}ul{padding-inline-start:.5rem}.post-list{list-style-type:none}li>ul,li>ol{margin-top:0;margin-bottom:0}p{margin:1rem 0}.about p{margin:none;padding-inline-start:.5rem}.container{margin:1rem auto;padding-left:1rem;padding-right:1rem;max-width:750px}.list-container{max-width:950px;margin:1rem auto;padding-left:1rem;padding-right:1rem}.footer-container{max-width:750px;margin:1rem auto;padding-left:1rem;padding-right:1rem;text-align:center}.index-container{display:flex;flex-wrap:wrap;max-width:950px;margin:1rem auto;padding-left:1rem;padding-right:1rem;gap:1rem}.index-flex-item{flex-basis:calc(50% - .5rem);min-width:400px;flex-grow:1}hr{margin:1rem 0;border:0 solid #1e00105c;border-top-width:1px}abbr{text-decoration:none}code,pre,.highlight{font-family:Inconsolata,monospace;font-size:.85rem;line-height:1.4}p>code,li>code{background:#282a36;color:#f8f8f2;white-space:pre;margin:0;padding:.2em 0;border-radius:.25rem}p>code:before,p>code:after,li>code:before,li>code:after{letter-spacing:-.2em;content:" "}pre,.highlight{border-radius:.25rem;overflow-x:auto;overflow-y:auto;padding:.25rem;margin:0}.highlight{margin-left:-.5rem;margin-right:-.5rem}.astro-code{margin-left:-.5rem;margin-right:-.5rem;padding:.5rem}a{text-decoration:none;color:#000;border-bottom:2px solid #e91e63}a:hover{border-color:pink;text-shadow:0 1px 0 rgba(255,192,203,.5)}.strike{text-decoration:line-through}.links{text-align:center;margin-bottom:0}header{max-width:750px;padding:1rem;padding-bottom:0;margin:0 auto}header a,header span{margin-right:.5rem}header .icon{font-size:1.5rem}.header-name{border-bottom:None;color:#a00}a,a:hover{transition:color .2s ease-in-out 0s,border-color .2s ease-in-out 0s,text-shadow .2s ease-in-out 0s}#index{display:table}#index .container{display:table-cell;padding:1em}.post img{align-items:center;padding:1em 0;max-width:100%}blockquote{border-left:.25em solid #dfe2e5;color:#6a737d;padding:0 1em;margin:auto}.taglist{color:gray}.title{color:red}.wide-img{max-width:100%}figure{margin:auto}.heatmap-widget{padding:0 0 1rem;margin:0 0 1rem}.counter-widget{padding:1rem;border:1px solid #ccc;border-radius:8px;margin:1rem 0;text-align:center}.counter-button{padding:.5rem 1rem;background:#e91e63;color:#fff;border:none;border-radius:4px;cursor:pointer}@media(max-width:700px){.title{color:green}}.image-row{width:100%}.double-image,.img,.imgContainer{float:left}.image-row{width:100%;height:50%}.image-row figure{width:50%;height:100%;float:left}.image-row-triple figure{width:33%;height:100%;float:left}@media(min-width:451px)and (max-width:1000px){.index-flex-item{min-width:340px!important}}@media(max-width:450px){.index-flex-item{min-width:100%!important}ul#post-list li{font-size:14px;margin-bottom:5px}h1{font-size:24px}}
+</style></head> <body> <header> <a href="/" class="header-name"><b>Zunayed Ali</b></a> <a href="/">Home</a> <a href="/bookshelf">Bookshelf</a> <a href="/activity">Activity</a> <a href="/">About</a> </header>  <div class="container post"> <h1 itemprop="headline">Generate course schedule w/ dependencies</h1> <div class="taglist"> 
+Tags:
+<a href="/tags/graphs">graphs</a> </div> <hr> <p>Problem Statement:</p>
+<blockquote>
+<p>You need to take n courses and a few of these courses have prerequisites. You are given the prerequisites as a list of pairs where each pair represents the course and the dependent course you need to have taken to take that course. Give N and the pre requisites generate a schedule. If no schedule can be generated return -1</p>
+</blockquote>
+<p><img src="/images/p20/problem.png" alt="problem"></p>
+<p>If we take a look at the prerequisite and were to draw out the connections between a course and it’s dependents it would look something like this</p>
+<p><img src="/images/p20/graph.png" alt="problem"></p>
+<p>Looks pretty close to a graph right? So now we can think of our different algorithms for traversing a graph. Since we have to generate a schedule and make sure all the pre requisites come first we should opt for a DFS approach. This way we keep going down the chain of dependencies until we hit the very last one. Once we do hit that “leaf” node that doesn’t have any more dependencies we can assume it’s safe to add it to our schedule/path. Let’s recall our the standard DFS algorithm code -</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#FF79C6">def</span><span style="color:#50FA7B"> dfs</span><span style="color:#F8F8F2">(</span><span style="color:#FFB86C;font-style:italic">list_of_vertices</span><span style="color:#F8F8F2">):</span></span>
+<span class="line"><span style="color:#F8F8F2">    visited </span><span style="color:#FF79C6">=</span><span style="color:#8BE9FD;font-style:italic"> set</span><span style="color:#F8F8F2">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    for</span><span style="color:#F8F8F2"> v </span><span style="color:#FF79C6">in</span><span style="color:#F8F8F2"> list_of_vertices:</span></span>
+<span class="line"><span style="color:#FF79C6">        if</span><span style="color:#F8F8F2"> v </span><span style="color:#FF79C6">not</span><span style="color:#FF79C6"> in</span><span style="color:#F8F8F2"> visited:</span></span>
+<span class="line"><span style="color:#F8F8F2">            explore(v, visited)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">def</span><span style="color:#50FA7B"> explore</span><span style="color:#F8F8F2">(</span><span style="color:#FFB86C;font-style:italic">node</span><span style="color:#F8F8F2">, </span><span style="color:#FFB86C;font-style:italic">visited</span><span style="color:#F8F8F2">):</span></span>
+<span class="line"><span style="color:#F8F8F2">    visited.add(node)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    for</span><span style="color:#F8F8F2"> v </span><span style="color:#FF79C6">in</span><span style="color:#F8F8F2"> node.neighbors:</span></span>
+<span class="line"><span style="color:#FF79C6">        if</span><span style="color:#F8F8F2"> (n </span><span style="color:#FF79C6">not</span><span style="color:#FF79C6"> in</span><span style="color:#F8F8F2"> seen):</span></span>
+<span class="line"><span style="color:#F8F8F2">            explore(v, visited)</span></span></code></pre>
+<p>So let’s example our problem again and see how we can change this standard algorithm to generate the schedule.</p>
+<ol>
+<li>We need a way to keep appending to the path so we can return that path as our schedule.</li>
+<li>We have to build a way to return all the dependencies of a course. One way we can do this is to build a table of all the prerequisites for a course and just do a lookup for our get_neighbors function</li>
+<li>What happens when we encounter a situation where we have a circular dependency?</li>
+<li>Consider the cases where no prereq information is given and we need to generate the rest of the schedule based on <code>n</code></li>
+</ol>
+<p>We can keep list to store the path to solve item #1
+<img src="/images/p20/path.png" alt="problem"></p>
+<p>To me #3 was difficult to initially solve. We can’t just use our seen variable because a course could have multiple references as a pre requisite.</p>
+<p>What exactly is a cycle in the case of a DFS algorithm. All it really means is that a node we’ve seen before got added to the call stack. Once that is allowed to happened wwe will have an infinite recursion because we’ll eventually keep adding the same node over and over. So if we can capture that first time we add a node back into our call stack we can determine that we have a cycle!</p>
+<p>One thing we can do is keep track of a node and see if it’s in the call stack. We can label the node as <code>VISITING</code> and if we ever encounter that node again in the <code>VISTING</code> state we know the graph has a cycle.</p>
+<p><img src="/images/p20/cycle.png" alt="problem"></p>
+<p>Let’s also go through an example where this is no cycle. Once we finished a dependency path we can mark those nodes as visited.</p>
+<p><img src="/images/p20/no_cycle.png" alt="problem"></p>
+<p>Putting 1,2,3 and 4 together we have</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#BD93F9">VISITED</span><span style="color:#FF79C6"> =</span><span style="color:#BD93F9"> 1</span></span>
+<span class="line"><span style="color:#BD93F9">VISITING</span><span style="color:#FF79C6"> =</span><span style="color:#FF79C6"> -</span><span style="color:#BD93F9">1</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">def</span><span style="color:#50FA7B"> gen_dep_list</span><span style="color:#F8F8F2">(</span><span style="color:#FFB86C;font-style:italic">prerequisites</span><span style="color:#F8F8F2">):</span></span>
+<span class="line"><span style="color:#6272A4">    # iterate through all values including prereq </span></span>
+<span class="line"><span style="color:#6272A4">    # if we don't do this the prereqs that don't have any</span></span>
+<span class="line"><span style="color:#6272A4">    # prereqs would trigger a keyerror in the table lookup  </span></span>
+<span class="line"><span style="color:#F8F8F2">    table </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> {}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    for</span><span style="color:#F8F8F2"> c, r </span><span style="color:#FF79C6">in</span><span style="color:#F8F8F2"> prerequisites:</span></span>
+<span class="line"><span style="color:#FF79C6">        if</span><span style="color:#F8F8F2"> c </span><span style="color:#FF79C6">not</span><span style="color:#FF79C6"> in</span><span style="color:#F8F8F2"> table:</span></span>
+<span class="line"><span style="color:#F8F8F2">            table[c] </span><span style="color:#FF79C6">=</span><span style="color:#8BE9FD;font-style:italic"> set</span><span style="color:#F8F8F2">()</span></span>
+<span class="line"><span style="color:#F8F8F2">        </span></span>
+<span class="line"><span style="color:#FF79C6">        if</span><span style="color:#F8F8F2"> r </span><span style="color:#FF79C6">not</span><span style="color:#FF79C6"> in</span><span style="color:#F8F8F2"> table:</span></span>
+<span class="line"><span style="color:#F8F8F2">            table[r] </span><span style="color:#FF79C6">=</span><span style="color:#8BE9FD;font-style:italic"> set</span><span style="color:#F8F8F2">()</span></span>
+<span class="line"><span style="color:#F8F8F2">    </span></span>
+<span class="line"><span style="color:#F8F8F2">        table[c].add(r)</span></span>
+<span class="line"><span style="color:#F8F8F2">            </span></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#F8F8F2"> table</span></span>
+<span class="line"><span style="color:#F8F8F2">    </span></span>
+<span class="line"><span style="color:#FF79C6">def</span><span style="color:#50FA7B"> course_schedule</span><span style="color:#F8F8F2">(</span><span style="color:#FFB86C;font-style:italic">n</span><span style="color:#F8F8F2">, </span><span style="color:#FFB86C;font-style:italic">prerequisites</span><span style="color:#F8F8F2">):</span></span>
+<span class="line"><span style="color:#FF79C6">    def</span><span style="color:#50FA7B"> dfs</span><span style="color:#F8F8F2">(</span><span style="color:#FFB86C;font-style:italic">course</span><span style="color:#F8F8F2">):</span></span>
+<span class="line"><span style="color:#FF79C6">        if</span><span style="color:#F8F8F2"> course </span><span style="color:#FF79C6">in</span><span style="color:#F8F8F2"> seen_and_status:</span></span>
+<span class="line"><span style="color:#FF79C6">            if</span><span style="color:#F8F8F2"> seen_and_status[course] </span><span style="color:#FF79C6">==</span><span style="color:#BD93F9"> VISITING</span><span style="color:#F8F8F2">:</span></span>
+<span class="line"><span style="color:#F8F8F2">                has_cycle[</span><span style="color:#BD93F9">0</span><span style="color:#F8F8F2">] </span><span style="color:#FF79C6">=</span><span style="color:#BD93F9"> True</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">            return</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F8F8F2">        seen_and_status[course] </span><span style="color:#FF79C6">=</span><span style="color:#BD93F9"> VISITING</span></span>
+<span class="line"><span style="color:#F8F8F2">    </span></span>
+<span class="line"><span style="color:#FF79C6">        for</span><span style="color:#F8F8F2"> required_course </span><span style="color:#FF79C6">in</span><span style="color:#F8F8F2"> table[course]:</span></span>
+<span class="line"><span style="color:#F8F8F2">            dfs(required_course)</span></span>
+<span class="line"><span style="color:#F8F8F2">            </span></span>
+<span class="line"><span style="color:#F8F8F2">        schedule.append(course)</span></span>
+<span class="line"><span style="color:#F8F8F2">        seen_and_status[course] </span><span style="color:#FF79C6">=</span><span style="color:#BD93F9"> VISITED</span></span>
+<span class="line"><span style="color:#F8F8F2">    </span></span>
+<span class="line"><span style="color:#6272A4">    # no prereqs given so generate a schedule with n courses</span></span>
+<span class="line"><span style="color:#FF79C6">    if</span><span style="color:#FF79C6"> not</span><span style="color:#F8F8F2"> prerequisites:</span></span>
+<span class="line"><span style="color:#FF79C6">        return</span><span style="color:#8BE9FD;font-style:italic"> list</span><span style="color:#F8F8F2">(</span><span style="color:#8BE9FD">range</span><span style="color:#F8F8F2">(n))</span></span>
+<span class="line"><span style="color:#F8F8F2">    </span></span>
+<span class="line"><span style="color:#F8F8F2">    table </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> gen_dep_list(prerequisites)</span></span>
+<span class="line"><span style="color:#F8F8F2">    seen_and_status </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> {}</span></span>
+<span class="line"><span style="color:#F8F8F2">    schedule </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> []</span></span>
+<span class="line"><span style="color:#F8F8F2">    has_cycle </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> [</span><span style="color:#BD93F9">False</span><span style="color:#F8F8F2">]    </span><span style="color:#6272A4"># in a list container so we can pass by ref</span></span>
+<span class="line"><span style="color:#F8F8F2">    </span></span>
+<span class="line"><span style="color:#FF79C6">    for</span><span style="color:#F8F8F2"> course, _ </span><span style="color:#FF79C6">in</span><span style="color:#F8F8F2"> prerequisites:</span></span>
+<span class="line"><span style="color:#F8F8F2">        dfs(course)</span></span>
+<span class="line"><span style="color:#F8F8F2">    </span></span>
+<span class="line"><span style="color:#FF79C6">    if</span><span style="color:#FF79C6"> not</span><span style="color:#F8F8F2"> schedule </span><span style="color:#FF79C6">or</span><span style="color:#F8F8F2"> has_cycle[</span><span style="color:#BD93F9">0</span><span style="color:#F8F8F2">]:</span></span>
+<span class="line"><span style="color:#FF79C6">        return</span><span style="color:#F8F8F2"> [</span><span style="color:#FF79C6">-</span><span style="color:#BD93F9">1</span><span style="color:#F8F8F2">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    if</span><span style="color:#8BE9FD"> len</span><span style="color:#F8F8F2">(schedule) </span><span style="color:#FF79C6">&#x3C;</span><span style="color:#F8F8F2"> n:</span></span>
+<span class="line"><span style="color:#F8F8F2">        schedule </span><span style="color:#FF79C6">+=</span><span style="color:#8BE9FD;font-style:italic"> list</span><span style="color:#F8F8F2">(</span><span style="color:#8BE9FD">range</span><span style="color:#F8F8F2">(</span><span style="color:#8BE9FD">len</span><span style="color:#F8F8F2">(schedule), n))</span></span>
+<span class="line"><span style="color:#F8F8F2">        </span></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#F8F8F2"> schedule</span></span></code></pre>
+<p>The runtime of this will be <code>O(v+e)</code></p> </div> <footer class="footer-container">
+--------------
+<br> <div class="contact"> <p> <code>zunayed@gmail.com</code> <br> <a href="https://www.github.com/zunayed">github.com/zunayed</a><br> </p> </div> </footer> <!-- Preserving original scripts --> <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@15.1.1/dist/lazyload.min.js"></script> <script>
+    var lazyLoadInstance = new LazyLoad({
+        elements_selector: ".lazy"
+    });
+</script> <!-- Global site tag (gtag.js) - Google Analytics --> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-51057520-2"></script> <script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-51057520-2');
+</script>  </body></html>

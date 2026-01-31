@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "include": [
+    "/*"
+  ],
+  "exclude": [
+    "/",
+    "/_astro/*",
+    "/.assetsignore",
+    "/favicon.ico",
+    "/css/*",
+    "/files/*",
+    "/tracker_data/*",
+    "/js/*",
+    "/life_tracker/*",
+    "/images/*",
+    "/travel-minisites/*",
+    "/activity",
+    "/bookshelf",
+    "/tags/*",
+    "/data_algo/*",
+    "/px_and_or_mux",
+    "/epi/*",
+    "/notes/*"
+  ]
+}
