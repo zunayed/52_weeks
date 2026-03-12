@@ -24,6 +24,10 @@ const getSeriesPosts = (seriesName: string) => {
 };
 
 const blogPosts = getSeriesPosts('blog');
+const recentDateFormatter = new Intl.DateTimeFormat('en-US', {
+  month: 'short',
+  year: 'numeric',
+});
 
 const seriesSections = [
     { id: 'graphs', title: 'Graphs' },
@@ -62,6 +66,7 @@ const seriesSections = [
       <ul class="post-list">
         <hr/>
         <h3>Recent Posts</h3>
+        <p>Artisian non ai hand written posts to train my replacement clone.</p>
 
       </ul>
     </div>
@@ -69,11 +74,11 @@ const seriesSections = [
     <div class="index-flex-item">
       <ul class="post-list">
         <hr/>
-        <h3></h3>
-
         {blogPosts.map(post => (
-        <li> 
-          » <a href={`/${post.slug}`}>{post.data.title}</a>
+        <li class="recent-post-item">
+          <span class="post-bullet">»</span>
+          <span class="post-date">{recentDateFormatter.format(post.data.date)}</span>
+          <a href={`/${post.slug}`}>{post.data.title}</a>
         </li>
         ))}
       </ul>
@@ -95,7 +100,7 @@ const seriesSections = [
               <p class="project-desc">A running log of experiments, side projects, and small wins. I update it when something ships or changes.</p>
             </li>
             <li>
-              <span class="project-title"><span class="project-bullet">»</span><a href="#">YouTube Looper</a></span>
+              <span class="project-title"><span class="project-bullet">»</span><a href="https://yt-looper.zunayed.workers.dev/">YouTube Looper</a></span>
               <p class="project-desc">A tiny tool for repeating clips while practicing or studying. It keeps the focus on a single moment.</p>
             </li>
             <li>

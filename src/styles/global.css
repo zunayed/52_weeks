@@ -38,7 +38,45 @@ ul {
     list-style-type: none;
     padding-inline-start: 0;
     margin-inline: 0;
-} 
+}
+
+.recent-post-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.45rem;
+}
+
+.recent-post-item + .recent-post-item {
+    margin-top: 0.35rem;
+}
+
+.post-bullet {
+    width: 1rem;
+    text-align: center;
+    flex: 0 0 auto;
+}
+
+.recent-post-item .post-date {
+    margin-right: 0;
+    flex: 0 0 auto;
+}
+
+.post-date {
+    display: inline-block;
+    margin-right: 0.5rem;
+    padding: 0.1rem 0.45rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    width: 11ch;
+    white-space: nowrap;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+    color: #6a737d;
+    border: 1px solid #d4d1c8;
+    border-radius: 6px;
+    background: #f9f8f5;
+}
 
 li > ul, li > ol {
     margin-top: 0;
