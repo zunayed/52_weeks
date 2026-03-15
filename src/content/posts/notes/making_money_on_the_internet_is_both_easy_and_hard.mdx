@@ -1,0 +1,48 @@
+---
+date: '2026-02-02'
+title: Making money on the internet is still hard
+draft: false
+series: blog
+---
+
+import WrappedImage from '../../../components/WrappedImage.astro';
+import WrappedImageClear from '../../../components/WrappedImageClear.astro';
+import bulkInvoiceDownload1 from '../../../assets/posts/making_money_internet/bulk_invoice_download_1.png';
+import bulkInvoiceDownload2 from '../../../assets/posts/making_money_internet/bulk_invoice_download_2.png';
+import bulkInvoiceDownload3 from '../../../assets/posts/making_money_internet/bulk_invoice_download_3.png';
+
+It feels easier than ever to get a software product off the ground with ai. For this little app, AI helped me get something working in about an hour or so. 
+As a backend engineer, that part was honestly pretty great. It helped me move faster on frontend work, get through the initial UI, and close the gap between idea 
+and prototype much faster than I could have a few years ago.
+
+<WrappedImage
+  src={bulkInvoiceDownload3}
+  alt="Bulk invoice download home screen"
+  side="right"
+  width={420}
+/>
+
+But getting something to work is not the same thing as getting something to live.
+The part that took real time was everything after the first burst of momentum. Building a UI people could actually use took longer. Shipping the app into Stripe took longer. Figuring out auth took longer. Deployment to AWS took longer. Managing stage and prod environments took longer. All of the small details that do not look impressive in a demo ended up being the actual work.
+That has been the clearest lesson for me so far: making money on the internet is both easy and hard. It is easy to build. It is hard to make something trustworthy. It is hard to make it polished. It is hard to make it deployable, billable, and reliable enough that a stranger will use it without knowing you.
+The app now makes about $1k / month. That is not some huge business, but it is enough to feel real. There is something satisfying about even a modest amount of revenue when it comes from solving a narrow, practical problem. In this case the product is a Stripe app for bulk invoice download and export. The pitch is not complicated. It saves people from repetitive manual work inside the Stripe dashboard.
+I think this is where AI fits best for me right now. It is not magic, and it did not replace the work. What it did do was compress the earliest part of the process and make me more effective in areas where I am weaker. It gave me leverage, especially on the frontend. But the rest still had to come from patience: debugging integrations, wiring up payments, handling auth, thinking through environments, and staying with the product long enough to make it feel complete.
+So yes, it is easier than ever to make money on the internet.
+And it is still hard in all the old, familiar ways.
+
+<WrappedImage
+  src={bulkInvoiceDownload1}
+  alt="Bulk invoice download home screen"
+  side="right"
+  width={420}
+/>
+
+<WrappedImage
+  src={bulkInvoiceDownload2}
+  alt="Bulk invoice download home screen"
+  side="right"
+  width={420}
+/>
+
+<WrappedImageClear />
+

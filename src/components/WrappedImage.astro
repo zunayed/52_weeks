@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  side?: 'left' | 'right';
+  width?: number;
+  caption?: string;
+}
+
+const {
+  src,
+  alt,
+  side = 'right',
+  width = 420,
+  caption,
+} = Astro.props;
+---
+
+<figure class={`wrapped-image wrapped-image-${side}`} style={`--wrapped-image-width: ${width}px;`}>
+  <Image src={src} alt={alt} />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .wrapped-image {
+    width: min(46%, var(--wrapped-image-width));
+    margin: 0.5rem 0 1rem;
+  }
+
+  .wrapped-image-right {
+    float: right;
+    margin-left: 1.5rem;
+  }
+
+  .wrapped-image-left {
+    float: left;
+    margin-right: 1.5rem;
+  }
+
+  .wrapped-image :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  figcaption {
+    margin-top: 0.5rem;
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 700px) {
+    .wrapped-image,
+    .wrapped-image-right,
+    .wrapped-image-left {
+      float: none;
+      width: 100%;
+      margin: 1rem 0;
+    }
+  }
+</style>
