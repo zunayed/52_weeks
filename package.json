@@ -11,10 +11,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^12.1.0",
-    "@astrojs/mdx": "^4.3.14",
+    "@astrojs/cloudflare": "^13.5.1",
+    "@astrojs/mdx": "^5.0.5",
     "@astrojs/react": "^4.1.0",
-    "astro": "^5.1.1",
+    "astro": "^6.3.2",
     "cal-heatmap": "^4.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
